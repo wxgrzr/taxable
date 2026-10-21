@@ -1,13 +1,21 @@
-# React + TypeScript + Vite + shadcn/ui
+# Taxable
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+A lightweight 1099 tax-reserve tracker built with Next.js, TypeScript,
+Tailwind CSS, and shadcn/ui.
+
+## Development
+
+```bash
+bun install
+bun dev
+```
 
 ## Adding components
 
 To add components to your app, run the following command:
 
 ```bash
-npx shadcn@latest add button
+bunx shadcn@latest add button
 ```
 
 This will place the ui components in the `src/components` directory.
