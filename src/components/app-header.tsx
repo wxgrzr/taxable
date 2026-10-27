@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { signOut } from "@/app/actions"
 import { Button } from "@/components/ui/button"
+import { ModeToggle } from "./shared/ModeToggle"
 
 export function AppHeader() {
   return (
@@ -10,6 +11,7 @@ export function AppHeader() {
         Taxable
       </Link>
       <nav className="flex items-center gap-1">
+        <ModeToggle />
         <Button
           variant="ghost"
           nativeButton={false}
