@@ -16,3 +16,4 @@
 # logs and caches
 *.log
 *.tsbuildinfo
+!.env.example
