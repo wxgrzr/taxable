@@ -6,12 +6,11 @@ import { ModeToggle } from "./shared/ModeToggle"
 
 export function AppHeader() {
   return (
-    <header className="flex items-center justify-between gap-4">
+    <header className="relative flex items-center justify-between gap-4">
       <Link href="/" className="text-sm font-medium tracking-widest uppercase">
         Taxable
       </Link>
       <nav className="flex items-center gap-1">
-        <ModeToggle />
         <Button
           variant="ghost"
           nativeButton={false}
@@ -25,6 +24,9 @@ export function AppHeader() {
           </Button>
         </form>
       </nav>
+      <div className="absolute top-0 left-full">
+        <ModeToggle />
+      </div>
     </header>
   )
 }

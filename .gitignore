@@ -17,3 +17,6 @@
 *.log
 *.tsbuildinfo
 !.env.example
+
+# teaching workspace (personal)
+/learn/
