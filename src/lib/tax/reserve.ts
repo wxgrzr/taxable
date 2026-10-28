@@ -23,8 +23,20 @@ export function summarizeReserve(
   payments: Payment[],
   transfers: Transfer[]
 ): ReserveSummary {
-  // TODO(human): compute incomeCents, requiredCents, savedCents, remainingCents.
-  void payments
-  void transfers
-  return { incomeCents: 0, requiredCents: 0, savedCents: 0, remainingCents: 0 }
+  const incomeCents = payments.reduce((acc, curr) => acc + curr.amount_cents, 0)
+  
+  const requiredCents = payments.reduce(
+    (acc, p) => acc + reserveForPayment(p),
+    0
+  )
+  
+  const savedCents = transfers.reduce((acc, curr) => acc + curr.amount_cents, 0)
+  const remainingCents = requiredCents - savedCents
+
+  return {
+    incomeCents,
+    requiredCents,
+    savedCents,
+    remainingCents,
+  }
 }
