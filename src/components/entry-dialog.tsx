@@ -58,6 +58,7 @@ export function EntryDialog({
   const [open, setOpen] = useState(false)
   const [state, formAction, pending] = useActionState(action, null)
   useActionToast(state, successMessage, () => setOpen(false))
+  console.log(open)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
