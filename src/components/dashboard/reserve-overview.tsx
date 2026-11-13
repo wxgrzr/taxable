@@ -23,8 +23,8 @@ export function ReserveOverview({
   recentPayment,
 }: ReserveOverviewProps) {
   const progress =
-    month.requiredCents > 0
-      ? Math.min(100, (month.savedCents / month.requiredCents) * 100)
+    allTime.requiredCents > 0
+      ? Math.min(100, (allTime.savedCents / allTime.requiredCents) * 100)
       : 0
 
   return (
@@ -59,17 +59,17 @@ export function ReserveOverview({
 
         <div className="flex flex-col gap-2">
           <div className="flex justify-between text-sm">
-            <span>Monthly tax reserve goal</span>
+            <span>Tax reserve goal</span>
             <span className="tabular-nums">
-              {formatCents(month.requiredCents)}
+              {formatCents(allTime.requiredCents)}
             </span>
           </div>
-          <Progress value={progress} aria-label="Monthly reserve progress" />
+          <Progress value={progress} aria-label="Tax reserve progress" />
           <span className="text-muted-foreground tabular-nums">
-            {formatCents(month.savedCents)} set aside ·{" "}
-            {month.remainingCents >= 0
-              ? `${formatCents(month.remainingCents)} remaining`
-              : `${formatCents(-month.remainingCents)} ahead`}
+            {formatCents(allTime.savedCents)} set aside ·{" "}
+            {allTime.remainingCents >= 0
+              ? `${formatCents(allTime.remainingCents)} remaining`
+              : `${formatCents(-allTime.remainingCents)} ahead`}
           </span>
         </div>
 
