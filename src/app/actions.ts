@@ -5,6 +5,7 @@ import { redirect } from "next/navigation"
 
 import { createClient, getUserId } from "@/lib/db/supabase/server"
 import { getSettings } from "@/lib/db/queries"
+import { isEntryTable } from "@/lib/db/tables"
 import { parseDollars, parsePercent } from "@/lib/tax/money"
 import type { ActionResult } from "@/types"
 
@@ -71,11 +72,14 @@ export async function addTransfer(
   return { ok: true }
 }
 
+// `table` is typed unknown on purpose: that's what a server action really receives.
 export async function deleteEntry(
-  table: "payments" | "transfers",
+  table: unknown,
   id: string
 ): Promise<ActionResult> {
   await requireUser()
+  if (!isEntryTable(table)) return { ok: false, error: "Unknown entry type." }
+
   const supabase = await createClient()
   const { error } = await supabase.from(table).delete().eq("id", id)
   if (error) return { ok: false, error: error.message }

@@ -6,12 +6,13 @@ import { toast } from "sonner"
 
 import { deleteEntry } from "@/app/actions"
 import { Button } from "@/components/ui/button"
+import type { EntryTable } from "@/lib/db/tables"
 
 export function DeleteEntryButton({
   table,
   id,
 }: {
-  table: "payments" | "transfers"
+  table: EntryTable
   id: string
 }) {
   const [pending, startTransition] = useTransition()
